@@ -31,6 +31,24 @@ AM_CONDITIONAL(HAVE_FAKE_GIT_DIR, test -f "$srcdir/.git/last_commit_info")
 
 PKG_CHECK_MODULES(LIBDDVD, libdreamdvd, HAVE_LIBDDVD="yes", HAVE_LIBDDVD="no")
 
+AC_ARG_ENABLE(run_from_usb,
+	[  --enable-run_from_usb          enable run_from_usb stuff],
+	[AC_DEFINE(ENABLE_RUN_FROM_USB,1,[enable run_from_usb stuff])])
+
+AM_CONDITIONAL(ENABLE_RUN_FROM_USB,test "$enable_run_from_usb" = "yes")
+if test "$enable_run_from_usb" = "yes"; then
+	AC_DEFINE(ENABLE_RUN_FROM_USB,1,[enable run_from_usb stuff])
+fi
+
+AC_ARG_ENABLE(hs7429,
+	[  --enable-hs7429          enable hs7429 stuff],
+	[AC_DEFINE(ENABLE_HS7429,1,[enable hs7429 stuff])])
+
+AM_CONDITIONAL(ENABLE_HS7429,test "$enable_hs7429" = "yes")
+if test "$enable_hs7429" = "yes"; then
+	AC_DEFINE(ENABLE_HS7429,1,[enable hs7429 stuff])
+fi
+
 AC_ARG_ENABLE(spark,
 	[  --enable-spark          enable spark stuff],
 	[AC_DEFINE(ENABLE_SPARK,1,[enable spark stuff])])
